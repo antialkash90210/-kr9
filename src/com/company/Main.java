@@ -25,17 +25,16 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         Random rnd = new Random();
+        int numberOfAttempts=0;
         int compNumber;
         int userNumber ;
+        final int EXIT_CODE = -1;
 
-
-        compNumber = rnd.nextInt(100)+1;
+        compNumber = rnd.nextInt(10)+1;
 
         do {
-            System.out.println("Введите любое число от 1 до 100: ");
+            System.out.println("Введите любое число от 1 до 10: ");
             userNumber = input.nextInt();
-
-
 
             if(userNumber > compNumber){
                 System.out.println("Введите число поменьше: ");
@@ -44,11 +43,23 @@ public class Main {
                 System.out.println("Введите число побольше: ");
             }
 
+            if (userNumber != EXIT_CODE) {
+                numberOfAttempts++;
+            }
+
 
         }while (compNumber!=userNumber);
 
         System.out.println("Поздравляю,вы угадали число!! ");
+        System.out.println("Количество попыток: "+numberOfAttempts);
 
+        if(numberOfAttempts<=3){
+            System.out.println("гений");
+        }else if (numberOfAttempts>3 && numberOfAttempts<=6){
+            System.out.println("среднячок");
+        }else {
+            System.out.println("лошара");
+        }
 
     }
 }
